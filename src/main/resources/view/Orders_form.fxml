@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="686.0" prefWidth="1344.0" style="-fx-background-color: rgba(52, 155, 156, 1);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OrdersFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002727" height="95.0" stroke="BLACK" strokeType="INSIDE" width="1344.0" />
+      <Text fill="#349b9c" layoutX="511.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clothify" textAlignment="CENTER">
+         <font>
+            <Font name="Algerian" size="85.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/store-Logo.png" />
+         </image>
+      </ImageView>
+      <Text fill="#e6f3f3" layoutX="520.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDER    MANAGEMENT">
+         <font>
+            <Font name="Algerian" size="34.0" />
+         </font>
+      </Text>
+      <Text layoutX="48.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DATE    :">
+         <font>
+            <Font name="Algerian" size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblDate" layoutX="132.0" layoutY="137.0" prefHeight="27.0" prefWidth="154.0" />
+      <Text layoutX="1079.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TIME     :">
+         <font>
+            <Font name="Algerian" size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblTime" layoutX="1168.0" layoutY="147.0" prefHeight="27.0" prefWidth="154.0" />
+      <Text layoutX="44.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Palce Order Employee Id    : ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtempId" layoutX="339.0" layoutY="195.0" />
+      <Button layoutX="511.0" layoutY="194.0" mnemonicParsing="false" onAction="#btnSearchEmployeeOnAction" text="Search">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Text layoutX="48.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cashier Id                                      : ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtcashierId" layoutX="339.0" layoutY="240.0" />
+      <Text layoutX="46.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cashier Name                                : ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtCashierName" layoutX="339.0" layoutY="282.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99cdcd" height="348.0" layoutX="33.0" layoutY="332.0" stroke="BLACK" strokeType="INSIDE" width="444.0" />
+      <Text layoutX="55.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Name         : ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="54.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Price           : ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text fill="#0d0d0d" layoutX="180.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ITEM DETAILS">
+         <font>
+            <Font name="Algerian" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="55.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Quantity     : ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="56.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item ID               : ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="55.0" layoutY="613.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Total Price  : ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtItemId" layoutX="220.0" layoutY="402.0" prefHeight="25.0" prefWidth="154.0" />
+      <TextField fx:id="txtItemName" layoutX="220.0" layoutY="450.0" prefHeight="25.0" prefWidth="154.0" />
+      <TextField fx:id="txtPrice" layoutX="220.0" layoutY="491.0" prefHeight="25.0" prefWidth="154.0" />
+      <TextField fx:id="txtTotalPrice" layoutX="220.0" layoutY="593.0" prefHeight="25.0" prefWidth="154.0" />
+      <TextField fx:id="txtQuantity" layoutX="220.0" layoutY="539.0" prefHeight="25.0" prefWidth="154.0" />
+      <Button layoutX="117.0" layoutY="635.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: rgba(255, 250, 101,1.0);" text="Add">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="236.0" layoutY="635.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="101.0" style="-fx-background-color: rgba(58, 227, 116,1.0);" text="Update">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="361.0" layoutY="635.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="96.0" style="-fx-background-color: rgba(255, 56, 56,1.0);" text="Delete">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tblItemOrder" layoutX="624.0" layoutY="192.0" prefHeight="421.0" prefWidth="698.0" style="-fx-background-color: #99cdcd;">
+         <columns>
+            <TableColumn fx:id="colId" prefWidth="128.0" text="ID" />
+            <TableColumn fx:id="colName" prefWidth="128.0" text="Name" />
+            <TableColumn fx:id="colQuantity" prefWidth="130.0" text="Quntity" />
+            <TableColumn fx:id="colPrice" prefWidth="137.0" text="Price" />
+            <TableColumn fx:id="colItemTotal" prefWidth="174.0" text="Item Total" />
+         </columns>
+      </TableView>
+      <Button layoutX="1214.0" layoutY="635.0" mnemonicParsing="false" onAction="#btnReloadOnAction" prefHeight="24.0" prefWidth="108.0" style="-fx-background-color: rgba(126, 255, 245,1.0);" text="Reload">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Text layoutX="624.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL   :  ">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Text>
+      <Label fx:id="lblTotalPrice" layoutX="767.0" layoutY="632.0" prefHeight="38.0" prefWidth="168.0" text="total" textFill="#014e4f" />
+      <Button layoutX="1055.0" layoutY="635.0" mnemonicParsing="false" onAction="#btnGenarateBillOnAction" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: rgba(211, 84, 0,1.0);" text="Genarate Bill">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

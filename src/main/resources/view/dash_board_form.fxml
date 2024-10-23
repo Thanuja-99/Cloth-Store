@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="683.0" prefWidth="1344.0" style="-fx-background-color: rgba(52, 155, 156, 1);" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#002727" height="95.0" stroke="BLACK" strokeType="INSIDE" width="1344.0" />
+      <Text fill="#349b9c" layoutX="561.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clothify" textAlignment="CENTER">
+         <font>
+            <Font name="Algerian" size="85.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="95.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/store-Logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnHome" layoutX="25.0" layoutY="124.0" mnemonicParsing="false" onAction="#btnHomeOnAction" prefHeight="75.0" prefWidth="202.0" style="-fx-background-color: rgb(52 155 156);">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnEmployee" layoutX="25.0" layoutY="215.0" mnemonicParsing="false" onAction="#btnEmployeeOnAction" prefHeight="75.0" prefWidth="202.0" />
+      <Button fx:id="btnProduct" layoutX="25.0" layoutY="304.0" mnemonicParsing="false" onAction="#btnProductOnAction" prefHeight="75.0" prefWidth="202.0" />
+      <Button fx:id="btnSuppliers" layoutX="25.0" layoutY="393.0" mnemonicParsing="false" onAction="#btnSuplliersOnAction" prefHeight="75.0" prefWidth="202.0" />
+      <Button fx:id="btnOrders" layoutX="25.0" layoutY="489.0" mnemonicParsing="false" onAction="#btnOrdersOnAction" prefHeight="75.0" prefWidth="202.0" />
+      <Button fx:id="btnRecords" layoutX="25.0" layoutY="586.0" mnemonicParsing="false" onAction="#btnRecordsOnAction" prefHeight="75.0" prefWidth="202.0" />
+      <ImageView fitHeight="60.0" fitWidth="95.0" layoutX="35.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-home-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="95.0" layoutX="35.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-employee-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="95.0" layoutX="35.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-cloakroom-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="95.0" layoutX="35.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-supplier-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="95.0" layoutX="35.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-maximum-order-32.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="95.0" layoutX="35.0" layoutY="594.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-reports-58.png" />
+         </image>
+      </ImageView>
+      <Text fill="#016869" layoutX="120.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HOME">
+         <font>
+            <Font name="Algerian" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#016869" layoutX="119.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee">
+         <font>
+            <Font name="Algerian" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#016869" layoutX="118.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRODUCT">
+         <font>
+            <Font name="Algerian" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#016869" layoutX="120.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suppliers">
+         <font>
+            <Font name="Algerian" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#016869" layoutX="120.0" layoutY="523.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ORDERS">
+         <font>
+            <Font name="Algerian" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#016869" layoutX="120.0" layoutY="630.0" strokeType="OUTSIDE" strokeWidth="0.0" text="records">
+         <font>
+            <Font name="Algerian" size="16.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="80.0" arcWidth="80.0" fill="#cce6e6" height="219.0" layoutX="308.0" layoutY="143.0" stroke="BLACK" strokeType="INSIDE" width="279.0" />
+      <Rectangle arcHeight="80.0" arcWidth="80.0" fill="#cce6e6" height="219.0" layoutX="661.0" layoutY="143.0" stroke="BLACK" strokeType="INSIDE" width="279.0" />
+      <Rectangle arcHeight="80.0" arcWidth="80.0" fill="#cce6e6" height="219.0" layoutX="1001.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="279.0" />
+      <Rectangle arcHeight="80.0" arcWidth="80.0" fill="#cce6e6" height="250.0" layoutX="297.0" layoutY="411.0" stroke="BLACK" strokeType="INSIDE" width="468.0" />
+      <Rectangle arcHeight="80.0" arcWidth="80.0" fill="#cce6e6" height="250.0" layoutX="816.0" layoutY="411.0" stroke="BLACK" strokeType="INSIDE" width="468.0" />
+      <Text layoutX="325.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekly Sales">
+         <font>
+            <Font name="Engravers MT" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="684.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weekly Orders">
+         <font>
+            <Font name="Engravers MT" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="1057.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee">
+         <font>
+            <Font name="Engravers MT" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="325.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RS :  1 000 000">
+         <font>
+            <Font name="Engravers MT" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="327.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Increased by  60%">
+         <font>
+            <Font name="Engravers MT" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="734.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="55 000">
+         <font>
+            <Font name="Engravers MT" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="698.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Decreased by  10%">
+         <font>
+            <Font name="Engravers MT" size="12.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="531.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-increase-50.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="42.0" layoutX="887.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-tag-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="1224.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-employee.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="1107.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15">
+         <font>
+            <Font name="Engravers MT" size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="1050.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers">
+         <font>
+            <Font name="Engravers MT" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="1069.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="60 000">
+         <font>
+            <Font name="Engravers MT" size="26.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="60.0" fitWidth="84.0" layoutX="1214.0" layoutY="162.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/icons8-customers-50.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="402.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Sales Chart">
+         <font>
+            <Font name="Engravers MT" size="16.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="209.0" fitWidth="342.0" layoutX="364.0" layoutY="445.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Monthly-chart.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="976.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Income Chart">
+         <font>
+            <Font name="Engravers MT" size="16.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="199.0" fitWidth="351.0" layoutX="913.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Income-Chart.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
