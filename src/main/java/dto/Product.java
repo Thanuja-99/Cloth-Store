@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 
 public class Product {
-    private String proId;
+    private Long proId;
     private String proCategory;
     private String proName;
     private String proSize;

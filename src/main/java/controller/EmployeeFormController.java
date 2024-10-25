@@ -122,7 +122,7 @@ public class EmployeeFormController implements Initializable {
         loadTable();
     }
     private void setTextToValues(Employee newValue) {
-        txtId.setText(newValue.getEmpId());
+        txtId.setText(String.valueOf(newValue.getEmpId()));
         cmbTitle.setValue(newValue.getEmpTitle());
         txtName.setText(newValue.getEmpName());
         txtNic.setText(newValue.getEmpNic());
@@ -148,16 +148,15 @@ public class EmployeeFormController implements Initializable {
         boolean isAdd = employeeService.addEmployee(employee);
         loadTable();
         clearTable();
-        if(isAdd){
-            new Alert(Alert.AlertType.INFORMATION,"Employee Added !!").show();
-        }else {
-            new Alert(Alert.AlertType.ERROR,"Employee Not Added :(").show();
+        if (isAdd) {
+            new Alert(Alert.AlertType.INFORMATION, "Employee Added !!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Employee Not Added :(").show();
         }
     }
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
-
         if (!txtId.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Deleting");
@@ -165,7 +164,7 @@ public class EmployeeFormController implements Initializable {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                boolean isDeleted = employeeService.deleteEmployeeById(txtId.getText());
+                boolean isDeleted = employeeService.deleteEmployee(txtId.getText());
                 if (isDeleted) {
                     showAlert("Employee Deleted", "Employee deleted successfully.");
                     clear();
@@ -175,7 +174,6 @@ public class EmployeeFormController implements Initializable {
                 }
             }
         }
-
     }
 
     @FXML
@@ -185,11 +183,45 @@ public class EmployeeFormController implements Initializable {
 
     @FXML
     void btnSearchOnAction(ActionEvent event) {
-
+        try {
+            Employee employee = employeeService.searchEmployee(txtSearch.getText());
+            if (employee != null) {
+                setTextToValues(employee);
+            } else {
+                showAlert("Not Found", "Employee not found.");
+            }
+        } catch (Exception e) {
+            showAlert("Error", "An error occurred during the search.");
+            e.printStackTrace(); // Log to see detailed error in console
+        }
     }
+
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
+        if (!cmbTitle.getValue().isEmpty() && !txtName.getText().isEmpty() && !txtNic.getText().isEmpty() && !txtEmail.getText().isEmpty() && !txtContact.getText().isEmpty() &&  !txtAddress.getText().isEmpty()) {
+            Employee employee= new Employee(
+                    Long.parseLong(txtId.getText()),
+                    cmbTitle.getValue(),
+                    txtName.getText(),
+                    txtNic.getText(),
+                    txtEmail.getText(),
+                    dateDob.getValue(),
+                    txtContact.getText(),
+                    txtAddress.getText()
+            );
+
+            boolean isUpdated = employeeService.updateEmployee(employee);
+            if (isUpdated) {
+                showAlert("Customer Updated", "Customer Updated Successfully..!");
+                clear();
+                loadTable();
+            } else {
+                showAlert("Error", "Couldn't update customer!");
+            }
+        } else {
+            showAlert("Missing Fields", "Please check your form again..!!!");
+        }
 
     }
     public void loadTable() {
@@ -202,7 +234,7 @@ public class EmployeeFormController implements Initializable {
         }
     }
 
-    private void clearTable(){
+    private void clearTable() {
         txtNameRegisterForm.setText(" ");
         cmbTitleRegisterForm.setValue(null);
         txtEmailRegisterForm.setText(" ");
@@ -219,13 +251,14 @@ public class EmployeeFormController implements Initializable {
         alert.showAndWait();
     }
     private void clear() {
-       txtId.setText(employeeService.generateEmployeeId());
-        txtAddress.clear();
-        txtNic.clear();
-        txtContact.clear();
-        txtEmail.clear();
-
-        cmbTitle.getSelectionModel().clearSelection();
+                txtId.setText(" ");
+                cmbTitle.setValue(null);
+                txtName.setText(" ");
+                txtNic.setText(" ");
+                txtEmail.setText(" ");
+                dateDob.setValue(null);
+                txtContact.setText(" ");
+                txtAddress.setText(" ");
     }
 
 }

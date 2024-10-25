@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class Employee {
 
 
-    private String empId;
+    private Long empId;
     private String empTitle;
     private String empName;
     private String empNic;

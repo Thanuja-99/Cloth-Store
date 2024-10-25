@@ -9,5 +9,5 @@ public interface CrudDao <T> extends SuperDao{
     ObservableList<T> getAll();
     boolean update(T t);
     T search(String id);
-    String getLatestId();
+
 }

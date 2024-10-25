@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Supplier {
-    private String supId;
+    private Long supId;
     private String supName;
     private String supTitle;
     private String supCompany;

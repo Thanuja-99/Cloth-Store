@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.modelmapper.ModelMapper;
 import repository.DaoFactory;
-import repository.SuperDao;
 import repository.custom.EmployeeDao;
 import service.custom.EmployeeService;
 import util.RepositoryType;
@@ -18,29 +17,37 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public boolean addEmployee(Employee employee) {
 
-        EmployeeEntity entity = new ModelMapper().map(employee, EmployeeEntity.class);
+            EmployeeEntity entity = new ModelMapper().map(employee, EmployeeEntity.class);
+            EmployeeDao employeeDao = DaoFactory.getInstance().getRepositoryType(RepositoryType.EMPLOYEE);
 
-        EmployeeDao employeeDao = DaoFactory.getInstance().getRepositoryType(RepositoryType.EMPLOYEE);
+            // Attempt to save the employee and return true if successful
+            try {
+                employeeDao.save(entity);
+                return true; // Indicate that the employee was added successfully
+            } catch (Exception e) {
+                e.printStackTrace(); // Log the exception for debugging
+                return false; // Indicate that the employee was not added
+            }
 
-        employeeDao.save(entity);
-        System.out.println("Service layer" +employee);
-        return false;
+
     }
 
     @Override
     public boolean updateEmployee(Employee employee) {
-        return false;
+        EmployeeEntity entity = new ModelMapper().map(employee, EmployeeEntity.class);
+        EmployeeDao employeeDao = DaoFactory.getInstance().getRepositoryType(RepositoryType.EMPLOYEE);
+        return employeeDao.update(entity); // Ensure you call update here
     }
 
     @Override
     public boolean deleteEmployee(String id) {
-
-        return false;
+        return employeeDaoImpl.delete(id);
     }
 
     @Override
     public Employee searchEmployee(String id) {
-        return null;
+        EmployeeEntity employeeEntity = employeeDaoImpl.search(id);
+        return new ModelMapper().map(employeeEntity,Employee.class);
     }
 
     @Override
@@ -54,22 +61,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             userList.add(new ModelMapper().map(userEntity, Employee.class));
         });
         return userList;
-    }
-
-    @Override
-    public boolean deleteEmployeeById(String text) {
-        return false;
-    }
-
-    @Override
-    public String generateEmployeeId() {
-        String lastEmployeeId = employeeDaoImpl.getLatestId();
-        if (lastEmployeeId==null){
-            return "E001";
-        }
-        int number = Integer.parseInt(lastEmployeeId.split("E")[1]);
-        number++;
-        return String.format("E%03d", number);
     }
 
 }
