@@ -1,7 +1,7 @@
 package service.custom;
 
 import dto.Employee;
-import entity.EmployeeEntity;
+
 import javafx.collections.ObservableList;
 import service.SuperService;
 
@@ -12,6 +12,7 @@ public interface EmployeeService extends SuperService {
     boolean deleteEmployee(String id);
     Employee searchEmployee(String id);
     ObservableList<Employee>getAll();
-
+    boolean deleteEmployeeById(String text);
+    String generateEmployeeId();
 
 }

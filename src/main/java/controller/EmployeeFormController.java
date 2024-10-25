@@ -8,13 +8,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.shape.Rectangle;
+
 import service.ServiceFactory;
-import service.SuperService;
+
 import service.custom.EmployeeService;
 import util.ServiceType;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class EmployeeFormController implements Initializable {
@@ -98,6 +99,8 @@ public class EmployeeFormController implements Initializable {
     @FXML
     private TextField txtSearch;
 
+    EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.EMPLOYEE);
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<String> empListTitle = FXCollections.observableArrayList("Mr","Ms");
@@ -116,6 +119,7 @@ public class EmployeeFormController implements Initializable {
         tblEmployee.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) -> {
             setTextToValues(newValue);
         }));
+        loadTable();
     }
     private void setTextToValues(Employee newValue) {
         txtId.setText(newValue.getEmpId());
@@ -130,7 +134,6 @@ public class EmployeeFormController implements Initializable {
 
     @FXML
     void btnAddRegisterFormOnActrion(ActionEvent event) {
-        EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.EMPLOYEE);
 
           Employee employee =new Employee (
                     null,
@@ -142,8 +145,10 @@ public class EmployeeFormController implements Initializable {
                     txtContactRegisterForm.getText(),
                     txtAddressRegisterForm.getText()
             );
-
-        if(employeeService.addEmployee(employee)){
+        boolean isAdd = employeeService.addEmployee(employee);
+        loadTable();
+        clearTable();
+        if(isAdd){
             new Alert(Alert.AlertType.INFORMATION,"Employee Added !!").show();
         }else {
             new Alert(Alert.AlertType.ERROR,"Employee Not Added :(").show();
@@ -153,11 +158,29 @@ public class EmployeeFormController implements Initializable {
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
 
+        if (!txtId.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Deleting");
+            alert.setContentText("Are you sure you want to delete this customer?");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                boolean isDeleted = employeeService.deleteEmployeeById(txtId.getText());
+                if (isDeleted) {
+                    showAlert("Employee Deleted", "Employee deleted successfully.");
+                    clear();
+                    loadTable();
+                } else {
+                    showAlert("Error", "Failed to delete employee.");
+                }
+            }
+        }
+
     }
 
     @FXML
     void btnReloadOnAction(ActionEvent event) {
-
+      loadTable();
     }
 
     @FXML
@@ -168,6 +191,41 @@ public class EmployeeFormController implements Initializable {
     @FXML
     void btnUpdateOnAction(ActionEvent event) {
 
+    }
+    public void loadTable() {
+        ObservableList<Employee> employee = employeeService.getAll();
+
+        if (employee!= null && !employee.isEmpty()) {
+          tblEmployee.setItems(employee);
+        } else {
+            System.out.println("No Employee found or employeelist is null.");
+        }
+    }
+
+    private void clearTable(){
+        txtNameRegisterForm.setText(" ");
+        cmbTitleRegisterForm.setValue(null);
+        txtEmailRegisterForm.setText(" ");
+        txtNICeRegisterForm.setText(" ");
+        dateDOBRegisterForm.setValue(null);
+        txtContactRegisterForm.setText(" ");
+        txtAddressRegisterForm.setText(" ");
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+    private void clear() {
+       txtId.setText(employeeService.generateEmployeeId());
+        txtAddress.clear();
+        txtNic.clear();
+        txtContact.clear();
+        txtEmail.clear();
+
+        cmbTitle.getSelectionModel().clearSelection();
     }
 
 }

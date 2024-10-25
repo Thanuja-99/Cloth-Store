@@ -4,9 +4,12 @@ import entity.EmployeeEntity;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import repository.custom.EmployeeDao;
 import util.HibernateUtil;
+
+import java.util.List;
 
 public class EmployeeDaoImpl implements EmployeeDao {
     @Override
@@ -28,18 +31,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public ObservableList<EmployeeEntity> getAll() {
-
-        ObservableList<EmployeeEntity> employeeList = FXCollections.observableArrayList();
         Session session = HibernateUtil.getSession();
-        session.beginTransaction();
-
-        Query<EmployeeEntity> query = session.createQuery("FROM EmployeeEntity", EmployeeEntity.class);
-        employeeList.addAll(query.getResultList());
-
-        session.getTransaction().commit();
+        Transaction transaction = session.getTransaction();
+        List<EmployeeEntity> userList = session.createQuery("FROM employee").list();
+        ObservableList<EmployeeEntity> list= FXCollections.observableArrayList();
         session.close();
-        return employeeList;
+        userList.forEach(userEntity -> {
+            list.add(userEntity);
+        });
+        return list;
     }
+
 
     @Override
     public boolean update(EmployeeEntity employee) {
@@ -49,6 +51,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public EmployeeEntity search(String id) {
         return null;
+    }
+
+    @Override
+    public String getLatestId() {
+        Session session = HibernateUtil.getSession();
+        session.getTransaction().begin();
+        Query query = session.createQuery("SELECT id FROM employee ORDER BY id DESC LIMIT 1");
+        String id = (String) query.uniqueResult();
+        session.close();
+        return id;
     }
 
 

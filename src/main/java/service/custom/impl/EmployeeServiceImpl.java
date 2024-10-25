@@ -2,6 +2,7 @@ package service.custom.impl;
 
 import dto.Employee;
 import entity.EmployeeEntity;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.modelmapper.ModelMapper;
 import repository.DaoFactory;
@@ -11,6 +12,8 @@ import service.custom.EmployeeService;
 import util.RepositoryType;
 
 public class EmployeeServiceImpl implements EmployeeService {
+
+    EmployeeDao employeeDaoImpl= DaoFactory.getInstance().getRepositoryType(RepositoryType.EMPLOYEE);
 
     @Override
     public boolean addEmployee(Employee employee) {
@@ -42,8 +45,31 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public ObservableList<Employee> getAll() {
-        EmployeeEntity entity = DaoFactory.getInstance().getRepositoryType(RepositoryType.EMPLOYEE);
-        return null;
+
+        EmployeeDao employeeDao = DaoFactory.getInstance().getRepositoryType(RepositoryType.EMPLOYEE);
+        ObservableList<EmployeeEntity> list = employeeDao.getAll();
+        ObservableList<Employee> userList = FXCollections.observableArrayList();
+
+        list.forEach(userEntity -> {
+            userList.add(new ModelMapper().map(userEntity, Employee.class));
+        });
+        return userList;
+    }
+
+    @Override
+    public boolean deleteEmployeeById(String text) {
+        return false;
+    }
+
+    @Override
+    public String generateEmployeeId() {
+        String lastEmployeeId = employeeDaoImpl.getLatestId();
+        if (lastEmployeeId==null){
+            return "E001";
+        }
+        int number = Integer.parseInt(lastEmployeeId.split("E")[1]);
+        number++;
+        return String.format("E%03d", number);
     }
 
 }
